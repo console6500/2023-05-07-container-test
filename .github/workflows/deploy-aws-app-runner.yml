@@ -4,12 +4,20 @@ on:
     inputs:
       environment:
         required: true
-        type: string
+        type: choice
+        description: Enter the target environment for the deployment
+        options:
+        - Staging
+        - Production
   workflow_dispatch:
     inputs:
       environment:
         required: true
-        type: string
+        type: choice
+        description: Enter the target environment for the deployment
+        options:
+        - Staging
+        - Production
 
 env:
   REGISTRY: ghcr.io
