@@ -6,12 +6,7 @@ name: "2-Delivery"
 # documentation.
 
 on:
-  push:
-    branches: [ "main" ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_call:
   workflow_dispatch:
 
 env:
