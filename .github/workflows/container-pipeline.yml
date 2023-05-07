@@ -28,7 +28,6 @@ jobs:
 
   delivery:
     needs: [integration]
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/docker-publish.yml
     permissions:
       contents: read
