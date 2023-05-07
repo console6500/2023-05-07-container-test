@@ -18,13 +18,13 @@ env:
 jobs:
   build:
     environment:
-      name: ${{ input.evironment }}
+      name: ${{ inputs.evironment }}
       url: ${{ vars.URL }}
     runs-on: ubuntu-latest
     permissions:
       packages: read
     concurrency:
-      group: deploy-${{ input.evironment }}
+      group: deploy-${{ inputs.evironment }}
       cancel-in-progress: false
     steps:
       - name: Configure AWS Credentials
@@ -38,7 +38,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Deploy staging with push to ECR
-        if: ${{ input.evironment }} == 'Staging'
+        if: ${{ inputs.evironment }} == 'Staging'
         id: push
         run: |
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
@@ -46,7 +46,7 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ github.event.repository.name }}
 
       - name: Deploy production with aws CLI
-        if: ${{ input.evironment }} == 'Production'
+        if: ${{ inputs.evironment }} == 'Production'
         run: |
           aws apprunner start-deployment --service-arn="${{ vars.SERVICE_ARN }}"
 
