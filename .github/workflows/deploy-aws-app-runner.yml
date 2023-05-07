@@ -47,7 +47,7 @@ jobs:
             sleep 10;
           done
 
-      - name: Wait for Deployment Status
+      - name: Wait for Deployment to Complete
         id: status
         timeout-minutes: 10
         run: |
@@ -107,7 +107,7 @@ jobs:
             sleep 10;
           done
 
-      - name: Wait for Deployment Status
+      - name: Wait for Deployment to Complete
         id: status
         timeout-minutes: 10
         run: |
