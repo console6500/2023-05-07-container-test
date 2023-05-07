@@ -28,7 +28,7 @@ jobs:
 
   delivery:
     needs: [integration]
-    uses: ./.github/workflows/delivery-container-image.yml
+    uses: ./.github/workflows/deliver-container-image.yml
     permissions:
       contents: read
       packages: write
