@@ -1,4 +1,4 @@
-name: Deploy AWS App Runner
+name: "3-Deployment"
 on:
   workflow_call:
   workflow_dispatch:
