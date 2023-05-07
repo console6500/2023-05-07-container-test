@@ -4,11 +4,7 @@ on:
     inputs:
       environment:
         required: true
-        type: choice
-        description: Enter the target environment for the deployment
-        options:
-        - Staging
-        - Production
+        type: string
   workflow_dispatch:
     inputs:
       environment:
