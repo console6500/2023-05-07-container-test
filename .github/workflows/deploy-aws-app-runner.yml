@@ -44,7 +44,7 @@ jobs:
           do
             echo "$(date) ${STATUS}"
             STATUS=$(aws apprunner describe-service --query="Service.Status" --output=text --service-arn="${{ vars.SERVICE_ARN }}")
-            sleep 30;
+            sleep 10;
           done
 
       - name: Wait for Deployment Status
@@ -104,7 +104,7 @@ jobs:
           do
             echo "$(date) ${STATUS}"
             STATUS=$(aws apprunner describe-service --query="Service.Status" --output=text --service-arn="${{ vars.SERVICE_ARN }}")
-            sleep 30;
+            sleep 10;
           done
 
       - name: Wait for Deployment Status
