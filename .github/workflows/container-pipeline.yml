@@ -34,9 +34,20 @@ jobs:
       packages: write
       id-token: write
 
-  deployment:
+  deploy-staging:
     needs: [delivery]
     uses: ./.github/workflows/deploy-aws-app-runner.yml
+    with:
+      environment: Staging
+    permissions:
+      packages: read
+    secrets: inherit
+
+  deploy-production:
+    needs: [deploy-staging]
+    uses: ./.github/workflows/deploy-aws-app-runner.yml
+    with:
+      environment: Production
     permissions:
       packages: read
     secrets: inherit
